@@ -26,3 +26,4 @@ def test_remove_element(nums, val, output):
     k = sol.remove_element(nums, val)
 
     assert k == output
+    assert val not in nums[:k]
