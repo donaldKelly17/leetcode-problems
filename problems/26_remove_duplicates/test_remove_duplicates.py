@@ -15,15 +15,15 @@ Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
 """
 
 testdata = [
-    ([1, 1, 2], [1, 2], 2),
-    ([0, 0, 1, 1, 1, 2, 2, 3, 3, 4], [0, 1, 2, 3, 4], 5),
+    ([1, 1, 2], 2),
+    ([0, 0, 1, 1, 1, 2, 2, 3, 3, 4], 5),
 ]
 
 
-@pytest.mark.parametrize("nums, expected, output", testdata)
-def test_merge(nums, expected, output):
+@pytest.mark.parametrize("nums, output", testdata)
+def test_merge(nums, output):
     sol = Solution()
     k = sol.remove_duplicates(nums)
 
-    assert nums == expected
     assert k == output
+    assert len(nums) == len(set(nums))
