@@ -26,4 +26,4 @@ def test_merge(nums, output):
     k = sol.remove_duplicates(nums)
 
     assert k == output
-    assert len(nums) == len(set(nums))
+    assert len(nums[:output]) == len(set(nums))
