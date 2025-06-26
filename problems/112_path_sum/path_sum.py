@@ -7,25 +7,21 @@ class TreeNode:
 
 
 class Solution:
-    def has_path_sum(self, root: TreeNode | None, targetSum: int) -> bool:
-        # If the tree is empty, there are no root-to-leaf paths.
-        if not root:
-            return False
-
-        def find_sum_path(root: TreeNode, targetSum: int, running_total: int):
+    def has_path_sum(self, root: TreeNode | None, target_sum: int) -> bool:
+        def find_sum_path(root: TreeNode, running_total: int):
             if root is None:
                 return False
 
             running_total += root.val
 
-            if root.left is None and root.right is None and running_total == targetSum:
+            if root.left is None and root.right is None and running_total == target_sum:
                 return True
 
-            return find_sum_path(root.left, targetSum, running_total) or find_sum_path(
-                root.right, targetSum, running_total
+            return find_sum_path(root.left, running_total) or find_sum_path(
+                root.right, running_total
             )
 
-        return find_sum_path(root, targetSum, running_total=0)
+        return find_sum_path(root, running_total=0)
 
 
 if __name__ == "__main__":
