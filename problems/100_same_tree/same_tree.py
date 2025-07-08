@@ -8,10 +8,17 @@ class TreeNode:
 
 class Solution:
     def is_same_tree(self, p: TreeNode | None, q: TreeNode | None) -> bool:
-        if p == q:
-            return True
 
-        if p is None or q is None or p.val != q.val:
-            return False
+        def is_balanced(p, q):
+            if not p and not q:
+                return True
 
-        return self.is_same_tree(p.left, q.left) and self.is_same_tree(p.right, q.right)
+            if (p and not q) or (not p and q):
+                return False
+
+            if p.val != q.val:
+                return False
+
+            return is_balanced(p.left, q.left) and is_balanced(p.right, q.right)
+
+        return is_balanced(p, q)
